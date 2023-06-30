@@ -7,22 +7,24 @@ const db = require("../utils/database");
 // DATA TYPES
 const { DataTypes } = Sequelize;
 
-// Calculations models database
-const Admin = db.define(
-  "admin",
+// Articles models database
+const Articles = db.define(
+  "articles",
   {
-    username: {
+    title: {
       type: DataTypes.STRING,
     },
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-    },
-    password: {
+    writer: {
       type: DataTypes.STRING,
     },
-    refresh_token: {
-      type: DataTypes.TEXT,
+    release_date: {
+      type: DataTypes.DATEONLY,
+    },
+    content: {
+      type: DataTypes.TEXT("long"),
+    },
+    abstract: {
+      type: DataTypes.STRING,
     },
   },
   {
@@ -34,4 +36,4 @@ const Admin = db.define(
   await db.sync();
 })();
 
-module.exports = Admin;
+module.exports = Articles;

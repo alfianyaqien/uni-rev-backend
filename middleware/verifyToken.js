@@ -12,7 +12,7 @@ exports.verifyToken = (req, res, next) => {
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) return res.sendStatus(403);
-    req.adminId = decoded.id;
+    req.userId = decoded.id;
     next();
   });
 };
