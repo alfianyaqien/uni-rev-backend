@@ -18,13 +18,13 @@ exports.getMatches = async (req, res) => {
 // get Matches by Id
 exports.getMatchesById = async (req, res) => {
   try {
-    const Matches = await Matches.findAll({
+    const matches = await Matches.findAll({
       where: {
         id: req.params.id,
       },
       attributes: ["competition","information"],
     });
-    const data = Matches[0];
+    const data = matches[0];
     if (data) {
       res.send(data);
     } else {
@@ -39,7 +39,10 @@ exports.getMatchesById = async (req, res) => {
 
 exports.createMatches = async (req, res) => {
   const { competition, matches, locations, category, information } = req.body;
-  const Matches_date = new Date();
+  const matches_date = new Date();
+  const hours = (matches_date.getHours()<10?'0':'') + matches_date.getHours();
+  const minutes = (matches_date.getMinutes()<10?'0':'') + matches_date.getMinutes();
+  const matches_time = hours + ':' + minutes;
 
   try {
     await Matches.create({
@@ -48,6 +51,8 @@ exports.createMatches = async (req, res) => {
       locations: locations,
       category: category,
       information: information,
+      date: matches_date,
+      time: matches_time
     });
 
     // Send status

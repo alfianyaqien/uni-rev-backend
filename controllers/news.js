@@ -38,7 +38,7 @@ exports.getNewsById = async (req, res) => {
 };
 
 exports.createNews = async (req, res) => {
-  const { title, author, abstract, content } = req.body;
+  const { title, author, abstract, content} = req.body;
   const news_date = new Date();
 
   try {
@@ -47,6 +47,7 @@ exports.createNews = async (req, res) => {
       author: author,
       abstract: abstract,
       content: content,
+      release_date: news_date
     });
 
     // Send status

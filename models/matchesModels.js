@@ -21,7 +21,7 @@ const Matches = db.define(
       type: DataTypes.STRING,
     },
     time: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
     },
     locations: {
       type: DataTypes.STRING,
