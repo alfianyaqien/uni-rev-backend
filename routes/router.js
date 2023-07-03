@@ -10,48 +10,16 @@ const { getNews, getNewsById, createNews, updateNews, deleteNews } = require("..
 // Define Router
 const router = express.Router();
 
-// endpoint /home
-router.get("/home", verifyToken, home);
-
-// endpoint /signup
-router.post("/signup", register);
-
-// endpoint /login
-router.post("/login", login);
-
-// endpoint /token
-router.get("/token", refreshToken);
-
 router.get("/news", getNews);
 router.get("/news/:id", getNewsById);
-router.get("/news", createNews);
-router.get("/news/:id", updateNews);
-router.get("/news/:id", deleteNews);
+router.post("/news", createNews);
+router.put("/news/:id", updateNews);
+router.delete("/news/:id", deleteNews);
 
 router.get("/matches", getMatches);
 router.get("/matches/:id", getMatchesById);
-router.get("/matches", createMatches);
-router.get("/matches/:id", updateMatches);
-router.get("/matches/:id", deleteMatches);
-
-router.put("/profile/:id", updateUser);
-
-// endpoint /calculations for create user
-router.post("/calculations", createCalculation);
-
-// endpoint /calculations for get log calculations
-router.get("/calculations", getLogCalculations);
-
-// endpoint /calculations/:id for delete log calculations
-router.delete("/calculations/:id", deleteLogCalculations);
-
-// endpoint /articles for get articles
-router.get("/articles", getArticles);
-
-// endpoint /articles/:id for get article by Id
-router.get("/articles/:id", getArticleById);
-
-// endpoint /logout
-router.delete("/logout", logout);
+router.post("/matches", createMatches);
+router.put("/matches/:id", updateMatches);
+router.delete("/matches/:id", deleteMatches);
 
 module.exports = router;

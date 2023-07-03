@@ -24,7 +24,7 @@ const News = db.define(
       type: DataTypes.DATEONLY,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10000),
     },
     draft: {
       type: DataTypes.STRING,

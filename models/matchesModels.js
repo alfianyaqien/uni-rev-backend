@@ -30,7 +30,7 @@ const Matches = db.define(
       type: DataTypes.STRING,
     },
     information: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10000),
     },
   },
   {
