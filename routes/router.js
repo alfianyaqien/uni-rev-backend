@@ -2,11 +2,10 @@
   IMPORT MODULE EXPRESS AND HANDLERS
 */
 const express = require("express");
-const { home, register, login, logout, getUserById, updateUser } = require("../controllers/users");
-const { createCalculation, getLogCalculations, deleteLogCalculations } = require("../controllers/calculation");
-const { getArticles, getArticleById } = require("../controllers/articles");
-const { verifyToken } = require("../middleware/verifyToken");
-const { refreshToken } = require("../controllers/refreshToken");
+// const { verifyToken } = require("../middleware/verifyToken");
+// const { refreshToken } = require("../controllers/refreshToken");
+const { getMatches, getMatchesById, createMatches, updateMatches, deleteMatches } = require("../controllers/matches")
+const { getNews, getNewsById, createNews, updateNews, deleteNews } = require("../controllers/news")
 
 // Define Router
 const router = express.Router();
@@ -20,13 +19,21 @@ router.post("/signup", register);
 // endpoint /login
 router.post("/login", login);
 
-// endpoint /profile/:id for get user by Id
-router.get("/profile/:id", getUserById);
-
 // endpoint /token
 router.get("/token", refreshToken);
 
-// endpoint /profile/:id for update user by Id
+router.get("/news", getNews);
+router.get("/news/:id", getNewsById);
+router.get("/news", createNews);
+router.get("/news/:id", updateNews);
+router.get("/news/:id", deleteNews);
+
+router.get("/matches", getMatches);
+router.get("/matches/:id", getMatchesById);
+router.get("/matches", createMatches);
+router.get("/matches/:id", updateMatches);
+router.get("/matches/:id", deleteMatches);
+
 router.put("/profile/:id", updateUser);
 
 // endpoint /calculations for create user

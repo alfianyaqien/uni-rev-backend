@@ -8,20 +8,26 @@ const db = require("../utils/database");
 const { DataTypes } = Sequelize;
 
 // Articles models database
-const Articles = db.define(
-  "articles",
+const News = db.define(
+  "news",
   {
     title: {
       type: DataTypes.STRING,
     },
-    writer: {
+    description: {
+      type: DataTypes.STRING,
+    },
+    author: {
       type: DataTypes.STRING,
     },
     release_date: {
       type: DataTypes.DATEONLY,
     },
     content: {
-      type: DataTypes.TEXT("long"),
+      type: DataTypes.STRING,
+    },
+    draft: {
+      type: DataTypes.STRING,
     },
     abstract: {
       type: DataTypes.STRING,
@@ -36,4 +42,4 @@ const Articles = db.define(
   await db.sync();
 })();
 
-module.exports = Articles;
+module.exports = News;

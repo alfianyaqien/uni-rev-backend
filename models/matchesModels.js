@@ -8,30 +8,29 @@ const db = require("../utils/database");
 const { DataTypes } = Sequelize;
 
 // Calculations models database
-const Users = db.define(
-  "users",
+const Matches = db.define(
+  "matches",
   {
-    name: {
-      type: DataTypes.STRING,
-    },
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-    },
-    password: {
-      type: DataTypes.STRING,
-    },
-    refresh_token: {
-      type: DataTypes.TEXT,
-    },
-    gender: {
-      type: DataTypes.STRING,
-    },
-    date_of_birth: {
+    date: {
       type: DataTypes.DATEONLY,
     },
-    phone_number: {
-      type: DataTypes.TEXT,
+    competition: {
+      type: DataTypes.STRING,
+    },
+    matches: {
+      type: DataTypes.STRING,
+    },
+    time: {
+      type: DataTypes.DATE,
+    },
+    locations: {
+      type: DataTypes.STRING,
+    },
+    category: {
+      type: DataTypes.STRING,
+    },
+    information: {
+      type: DataTypes.STRING,
     },
   },
   {
@@ -43,4 +42,4 @@ const Users = db.define(
   await db.sync();
 })();
 
-module.exports = Users;
+module.exports = Matches;
